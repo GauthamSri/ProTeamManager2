@@ -1,0 +1,35 @@
+﻿@model ProTeamManager2.Models.UserStory
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create User Story</h2>
+<br/>
+
+@using ( Html.BeginForm() )
+{
+	<fieldset>
+		<legend>User Story</legend>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.Name)
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor(model => model.Name)
+		</div>
+		<br/>
+
+		<div class="editor-label">
+			Description
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor( model => model.descriprion )
+		</div>
+		<br/>
+
+		<input type="submit" value="Create" />
+		
+	</fieldset>
+}
+

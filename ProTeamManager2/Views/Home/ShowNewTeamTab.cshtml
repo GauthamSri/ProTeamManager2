@@ -1,0 +1,32 @@
+﻿@model ProTeamManager2.Models.TeamModel
+
+@{
+ 
+ Layout = null;
+} 
+
+    <link href="Styles/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+        <link href="Styles/jquery-ui.css" rel="stylesheet">
+     <link href="Styles/ShowNewTeamTab.css" rel="stylesheet">
+        <link href="Styles/Index.css" rel="stylesheet">
+
+    <script src = "Scripts/jquery-1.11.1.min.js"></script>
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+        
+    <script src="Scripts/jquery-ui-1.10.4.custom.js"></script>
+  
+    <script src="Scripts/ShowNewTeamTab.js"></script>
+
+<form id ="newTeamForm">
+
+       <fieldset>
+<p class = "labelbox"><label class="fontStyle">Team Name:</label> @Html.TextBoxFor(x => x.Name)      </p>
+<p class = "labelbox"><label class="fontStyle">Organization Name: </label> @Html.TextBoxFor(x => x.OrganizationName)</p>
+<p class = "labelbox"><label class="fontStyle">Division Name:   </label>@Html.TextBoxFor(x => x.DivisionName)</p>
+<p class = "labelbox"><label class="fontStyle">Owned By:  </label>  @Html.TextBoxFor(x => x.OwnedBy) </p>
+
+    <button type="button" onclick="saveNewTeam('@Model')">Submit</button>
+
+      </fieldset>
+</form>

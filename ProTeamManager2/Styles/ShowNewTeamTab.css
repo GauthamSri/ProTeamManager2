@@ -1,0 +1,24 @@
+﻿.fontLight {
+font-family: 'HelveticaNeueLTCom45Light', Arial;
+}
+
+.labelbox 
+{
+  min-width:515px;
+  min-height:40px;
+}
+
+fieldset {
+     min-width: 100px;
+     display: inline-block;
+ }
+
+ fieldset input{
+     float: right;
+ }
+ 	.fontStyle
+	{
+	  font-size:14px;
+	  color:#313131;
+	  font-weight:bold;
+	}

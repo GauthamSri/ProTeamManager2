@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article>
+    <p>
+        ProTeamManager
+    </p>
+
+    <p>
+        Use this tool to track project development.
+    </p>
+
+    <p>
+       Specially designed for Agile.
+    </p>
+</article>
+
+<aside>
+    <h3>Tracking </h3>
+    <p>
+        Track the development process in detail.
+    </p>
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+    </ul>
+</aside>

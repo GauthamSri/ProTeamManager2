@@ -1,0 +1,39 @@
+﻿@model ProTeamManager2.Models.Task
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Task</h2>
+@using ( Html.BeginForm() )
+{
+	<fieldset>
+		<legend>User Story</legend>
+
+		<div class="editor-label">
+			Task Name
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor(model => model.taskName)
+		</div>
+		<br/>
+
+		<div class="editor-label">
+			Description
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor( model => model.taskDesccription )
+		</div>
+		<br/>     
+		<div class="editor-label">
+			Estimated Hours
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor( model => model.estimatedHours )
+		</div>
+		<br/>
+
+		<input type="submit" value="Create" />
+		
+	</fieldset>
+}

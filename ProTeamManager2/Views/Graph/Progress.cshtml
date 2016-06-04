@@ -1,0 +1,23 @@
+﻿@model ProTeamManager2.Models.ProgressData
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+     @Styles.Render("~/Content/mystyles")
+     @Scripts.Render("~/bundles/mybundle")
+    <title>Progress Graph</title>
+</head>
+<body>
+    <div>
+         <div id="graphContainer" class ="graphContainer">
+              <img id="graph" src="@Model.url" /> 
+
+            </div>
+            <p> @Model.scale</p>
+    </div>
+</body>
+</html>

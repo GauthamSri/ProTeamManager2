@@ -1,0 +1,19 @@
+﻿@model ProTeamManager2.Models.UserPerformanceGraphData
+
+
+@{
+    Layout = null;
+    
+    var myChart = new Chart(width: 600, height: 400)
+        .AddTitle("User Performance Graph")
+        .AddSeries(
+            name: "Team Member",
+            xValue: Model.tasks,
+            yValues: Model.ratings,
+            xField: "Tasks",
+            yFields:"Ratings",
+            legend:"X-Axis:Tasks Y-Axis: Ratings")
+        .Write();
+        
+      
+}

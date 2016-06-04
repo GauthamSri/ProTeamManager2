@@ -1,0 +1,15 @@
+﻿@model ProTeamManager2.Models.ProgressGraphData
+
+@{
+    Layout = null;
+
+    var myChart = new Chart(width: 600, height: 400)
+        .AddTitle("Progress Chart")
+        .AddSeries(
+            name: "Employee",chartType: "Line",
+            xValue: Model.xValues,
+            yValues: Model.yValues)
+        .Write();
+        
+      
+}

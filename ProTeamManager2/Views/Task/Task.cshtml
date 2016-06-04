@@ -1,0 +1,72 @@
+﻿@model ProTeamManager2.Models.TaskData
+
+@{
+    ViewBag.Title = "Task";
+}
+
+<head>
+    
+  @Styles.Render("~/Content/mystyles")
+  @Scripts.Render("~/bundles/mybundle")
+  @Scripts.Render("~/bundles/Task.js")
+    
+    </head>
+
+<div id ="body">
+
+    <div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Tasks</a></li>
+	</ul>
+
+        <div id="tabs-1">
+
+             <div> 
+
+            @Html.ActionLink("Create New Task", "Create", "Task")
+        </div>
+
+             <table id="assetDetailsNavTable" class="assetDetailsNavTable">
+              <thead>
+               <tr>
+                <th> Name</th>
+                <th> Description </th>
+                <th> Status</th>      
+                <th> Assigned To</th>
+                <th> Estimated Hours</th>                       
+               </tr>
+             </thead>
+               <tbody id="tableBody">
+                   @if (Model != null)
+                   {
+
+                   foreach(var t in Model.allTasks)
+                   {
+                       
+                       if(t!= null)
+                       {
+             <tr>
+             <td> @t.taskName</td>
+             <td>@t.taskDesccription</td>
+             <td>@t.taskStatus</td>
+             <td>@t.AssignedTo</td>
+             <td>@t.estimatedHours</td>
+             <td> 
+             <select id="@t.Id">
+             @foreach(var user in Model.allUsers)
+             {
+             <option id="@user.UserName"> @user.UserName</option>
+             }
+             </select>
+             <button type="button" onclick="assignToUser('@t.Id','@Url.Action("AssignToUser", "Task")')">Assign To</button>
+                 
+             </td>
+             <td>(<a href="/Task/Edit/@t.Id"  style="color: blue;">edit</a>) / (<a href="/Task/Delete/@t.Id"  style="color: blue;">delete</a>)</td>
+             </tr>
+                       }
+                   }
+                 }
+  
+             </tbody>
+           </table>
+

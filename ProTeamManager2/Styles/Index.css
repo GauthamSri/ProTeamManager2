@@ -1,0 +1,51 @@
+﻿.assetDetailsNavTable
+	 {
+	   width:100%;
+	   height:100px;
+	   background-color:#fafafa;	
+	   border:0px;
+	   margin:0px;   
+	   border-collapse: collapse;
+	 }
+
+.teams {
+       }
+	 
+	.assetDetailsNavTable thead tr
+	{ 
+	  border-bottom:0px none; 
+	  border-top:0px none;
+	  line-height:30px; 
+	  cursor:default !important;
+	  
+	}
+	.assetDetailsNavTable th{font-size:12px; text-align:left; color:#313131; background-color:#fafafa;}
+	.assetDetailsNavTable td{font-size:0.75em; padding:15px 2px 15px 2px; width:97px;}
+	.assetDetailsNavTable tr
+	{
+	  border-top:1px solid #cacaca;
+	}
+
+	.assetDetailsNavTable tr:nth-child(odd) {background: #FAFAFA;}
+  .assetDetailsNavTable tr:nth-child(even) {background: #FAFAFA; }
+  .assetDetailsNavTable tr.new{border-bottom:1px solid #0056a0; border-top:1px solid #0056a0; color:#0056a0;}
+	.assetDetailsNavTable tr:hover
+	{
+	  cursor:pointer;
+	}
+	
+	.fontStyle
+	{
+	  font-size:14px;
+	  color:#313131;
+	  font-weight:bold;
+	}
+.fixwidth {
+    width:75px;
+}
+
+.graphContainer {
+
+    width: 80%;
+    height: 500px;
+}

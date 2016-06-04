@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Rate";
+}
+
+
+<head>
+  @Scripts.Render("~/bundles/mybundle")  
+  @Scripts.Render("~/bundles/rate.js")
+    
+    </head>
+<body>
+
+<h2>Rate</h2>
+    <div>
+    <p style="width:50px">Rating: </p>
+<select id="rating">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+</div>
+ <p >Comment : </p>
+<textarea id="comment" rows="6" cols="75"> </textarea>
+<div>
+<button type="button" id="submit" onclick="addComment('@ViewBag.taskID','@Url.Action("AddFeedback", "Home")')">Submit</button>   
+</div> 
+ </body> 

@@ -1,0 +1,26 @@
+﻿@model ProTeamManager2.Models.Sprint
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Sprint</h2>
+<br/>
+
+@using ( Html.BeginForm() )
+{
+	<fieldset>
+		<legend>Project</legend>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.sprintNumber)
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor(model => model.sprintNumber)
+		</div>
+		<br/>
+
+		<input type="submit" value="Create" />
+		
+	</fieldset>
+}

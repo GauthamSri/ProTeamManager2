@@ -1,0 +1,136 @@
+﻿
+@model ProTeamManager2.Models.HomeDataModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+    <head>
+    <link href="Styles/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+        <link href="Styles/jquery-ui.css" rel="stylesheet">
+        <link href="Styles/Index.css" rel="stylesheet">
+
+    <script src = "Scripts/jquery-1.11.1.min.js"></script>
+    <script src="Scripts/jquery.js"></script>
+    <script src="Scripts/jquery-ui.js"></script>
+        
+    <script src="Scripts/jquery-ui-1.10.4.custom.js"></script>
+  
+    <script src="Scripts/Index.js"></script>
+    </head>
+
+
+<div id ="body">
+
+    <div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Teams</a></li>
+		<li><a href="#tabs-3">Projects</a></li>
+	</ul>
+	<div id="tabs-1">
+        <div> 
+
+       <!--  <img src="Images/add.png" id="input_img" onclick="addNewTeam()"> -->
+
+            @Html.ActionLink("Create New Team", "CreateNewTeam", "Home")
+        </div>
+         
+           <table id="assetDetailsNavTable" class="assetDetailsNavTable">
+              <thead>
+               <tr>
+                <th> Team Name</th>
+                <th> Organization Name </th>
+                <th> Division Name</th>
+                <th> Team Members Count</th>                              
+               </tr>
+             </thead>
+               <tbody id="tableBody">
+                   @if (Model != null)
+                   {
+
+                   foreach(var t in Model.teams)
+                   {
+                       
+                       if(t!= null)
+                       {
+             <tr>
+             <td> @t.Name</td>
+             <td>@t.OrganizationName</td>
+             <td>@t.DivisionName</td>
+             <td> @t.NoOfMembers</td>
+             <td> 
+             <select id="@t.Id">
+             @foreach(var user in Model.allUsers)
+             {
+             <option id="@user.UserName"> @user.UserName</option>
+             }
+             </select>
+             <button type="button" onclick="addUserToTeam(@t.Id)">Add User</button>
+                 
+             </td>
+             <td>(<a href="/Home/EditTeam/@t.Id"  style="color: blue;">edit</a>) / (<a href="/Home/DeleteTeam/@t.Id"  style="color: blue;">delete</a>)</td>
+                 <td>(<a href="/Home/GetTasksForTeam/@t.Id"  style="color: black;">Manage Tasks</a>)</td>
+             </tr>
+                       }
+                   }
+                 }
+  
+             </tbody>
+           </table>
+
+
+  </div>
+
+	<div id="tabs-3">
+
+         <div> 
+
+       <!--  <img src="Images/add.png" id="input_img" onclick="addNewTeam()"> -->
+
+            @Html.ActionLink("Create New Project", "Create", "Project")
+        </div>
+           
+           <table id="assetDetailsNavTable" class="assetDetailsNavTable">
+              <thead>
+               <tr>
+                <th> Project Name</th>
+                <th> Project Description </th>
+                <th> Owned By</th> 
+                <th> Associated Team</th>                            
+               </tr>
+             </thead>
+             <tbody id="tableBody">
+
+                  @if (Model != null && Model.projects != null)
+                   {
+
+                 foreach(var t in Model.projects)
+                  {
+                     if(t!= null)
+                       {
+             <tr>
+             <td><a href="/Release/Release/@t.Id">@t.projectName</a></td>
+             <td>@t.projectDescription</td>
+             <td>@t.ownedBy</td>
+             <td>@t.associatedTeam</td>
+
+             <td> 
+             <select id="@t.Id" class="teams">
+             @foreach(var team in Model.teams)
+             {
+             <option id="@team.Id"> @team.Name</option>
+             }
+             </select>
+             <button type="button" onclick="assignTeam(@t.Id)">Assign Team</button>
+                 
+             </td>
+             <td>(<a href="/Project/EditProject/@t.Id"  style="color: blue;">edit</a>) / (<a href="/Project/DeleteProject/@t.Id"  style="color: blue;">delete</a>)</td>
+             </tr>
+                       }
+                   }
+                 }
+             </tbody>
+           </table>
+  </div>
+</div>
+   
+    </div>

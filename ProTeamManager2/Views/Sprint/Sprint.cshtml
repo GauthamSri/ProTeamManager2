@@ -1,0 +1,67 @@
+﻿@model ProTeamManager2.Models.SprintData
+
+@{
+    ViewBag.Title = "Sprint";
+}
+
+<head>
+    
+  @Styles.Render("~/Content/mystyles")
+  @Scripts.Render("~/bundles/mybundle")
+  @Scripts.Render("~/bundles/Sprint.js")
+    
+</head>
+
+<div id ="body">
+
+    <div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Sprint</a></li>
+	</ul>
+
+        <div id="tabs-1">
+
+             <div> 
+
+            @Html.ActionLink("Create New Sprint", "Create", "Sprint")
+        </div>
+
+             <table id="assetDetailsNavTable" class="assetDetailsNavTable">
+              <thead>
+               <tr>
+                <th> Sprint Number</th>
+                <th> Associated Release </th>                             
+               </tr>
+             </thead>
+               <tbody id="tableBody">
+                   @if (Model != null)
+                   {
+
+                   foreach(var t in Model.allSprints)
+                   {
+                       
+                       if(t!= null)
+                       {
+             <tr>
+             <td> <a href="/Userstory/Userstory/@t.Id">Sprint @t.sprintNumber</a></td>
+             <td>@t.associatedRelease</td>
+             <td>(<a href="/Sprint/Edit/@t.Id"  style="color: blue;">edit</a>) / (<a href="/Sprint/Delete/@t.Id"  style="color: blue;">delete</a>)</td>
+                 <td>
+                 <a href="@Url.Action("SprintProgress", "Graph", new { id = t.Id })">Progress Graph</a>
+             </td>
+             </tr>
+                       }
+                   }
+                 }
+  
+             </tbody>
+           </table>
+
+
+        </div>
+
+    </div>
+
+
+ </div>
+

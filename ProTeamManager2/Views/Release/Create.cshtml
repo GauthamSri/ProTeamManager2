@@ -1,0 +1,43 @@
+﻿@model ProTeamManager2.Models.Release
+
+@{
+    ViewBag.Title = "Create";
+}
+ <head>
+    
+  @Styles.Render("~/Content/mystyles")
+  @Scripts.Render("~/bundles/mybundle")
+  @Scripts.Render("~/bundles/Release.js")
+    
+    </head>
+
+<h2>Create New Release</h2>
+<br/>
+
+@using ( Html.BeginForm() )
+{
+	<fieldset>
+		<legend>Project</legend>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.releaseNumber)
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor(model => model.releaseNumber)
+		</div>
+		<br/>
+
+        <!--
+		<div class="editor-label">
+			Release Date
+		</div>
+		<div class="editor-field">
+		Html.TextBoxFor(model => model.releaseDate, new { id = "releaseDate" } )
+		</div>
+		<br/>
+            -->
+
+		<input type="submit" value="Create" />
+		
+	</fieldset>
+}

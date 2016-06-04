@@ -1,0 +1,34 @@
+﻿@model ProTeamManager2.Models.Release
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Release</h2>
+<br/>
+
+@using ( Html.BeginForm() )
+{
+	<fieldset>
+		<legend>Project</legend>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.releaseNumber)
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor(model => model.releaseNumber)
+		</div>
+		<br/>
+
+		<div class="editor-label">
+			Sprints Count
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor( model => model.NoOfSprints )
+		</div>
+		<br/>
+
+		<input type="submit" value="Create" />
+		
+	</fieldset>
+}

@@ -1,0 +1,43 @@
+﻿@model ProTeamManager2.Models.Project
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Project</h2>
+<br/>
+
+@using ( Html.BeginForm() )
+{
+	<fieldset>
+		<legend>Project</legend>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.projectName)
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor(model => model.projectName)
+		</div>
+		<br/>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.projectDescription)
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor( model => model.projectDescription )
+		</div>
+		<br/>
+
+		<div class="editor-label">
+				Associate Team
+			</div>
+        <div class="editor-field">
+			@Html.TextBoxFor(model => model.fk_teamId)
+		</div>
+		<br/>
+
+		<input type="submit" value="Create" />
+		
+	</fieldset>
+}
+

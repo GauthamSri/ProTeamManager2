@@ -1,0 +1,177 @@
+﻿@model ProTeamManager2.Models.UserDashboardData
+
+@{
+    ViewBag.Title = "UserDashboard";
+}
+
+<head>
+    
+  @Styles.Render("~/Content/mystyles")
+  @Scripts.Render("~/bundles/mybundle")
+  @Scripts.Render("~/bundles/Userdashboard.js")
+    
+    </head>
+
+<div id ="body">
+
+    <div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Tasks</a></li>
+        <li><a href="#tabs-3">Feedback Management</a></li>
+         @if(Model.isManager == true)
+         { 
+        <li><a href="#tabs-4">Performance Report</a></li>
+         }
+	</ul>
+
+        <div id="tabs-1">
+
+             <table id="assetDetailsNavTable" class="assetDetailsNavTable">
+              <thead>
+               <tr>
+                <th> Name</th>
+                <th> Description </th>
+                <th> Status</th>      
+                <th> Estimated Hours</th>   
+                <th> Actual Hours</th>
+                <th> Rating</th>                       
+               </tr>
+             </thead>
+               <tbody id="tableBody">
+                   @if (Model != null)
+                   {
+
+                   foreach(var t in Model.allTasks)
+                   {
+                       
+                       if(t!= null)
+                       {
+             <tr>
+             <td>
+                 @if(t.isHighPriority)
+                 {
+                  <font color="red">@t.taskName </font>
+                 }
+                 else
+                 {
+                  @t.taskName
+                 }
+
+             </td>
+             <td>@t.taskDesccription</td>
+             <td>@t.taskStatus</td>
+             <td>@t.estimatedHours</td>
+             <td>@t.actualHours</td>
+             <td>
+                 @if(t.rating == 0)
+                 {
+                     @:NA 
+                     if(Model.isManager == true)
+                     {
+                     <img src ="/Images/edit.png" onclick="rate('@t.Id','@Url.Action("Rate", "Home")')" />
+                     }
+                 }
+                 else
+                 {
+                 for(int i =0;i< t.rating; i++)
+                 {
+                     @:&#9733
+                 }
+                     if(Model.isManager == true)
+                 {
+                 <img src ="/Images/edit.png" onclick="rate('@t.Id','@Url.Action("Rate", "Home")')" />
+                 }
+                 }
+
+             </td>
+             <td> 
+                 @if(Model.isManager == true)
+                 { 
+                 <button type="button" onclick="changePriority('@t.Id','@Url.Action("ChangeTaskPriority", "Home")')">Flip Priority</button>
+                 }
+             </td>
+             <td>
+                 <select id="@t.Id">
+                 <option value="Created">Created</option>
+                 <option value="InProgress">InProgress</option>
+                 <option value="Completed">Completed</option>
+                 <option value="Cancelled">Cancelled</option>
+                 </select>
+                 <button type="button" onclick="changeStatus('@t.Id','@Url.Action("ChangeTaskStatus", "Home")')">Change Status</button>
+
+             </td>
+
+             
+             </tr>
+                       }
+                   }
+                 }
+  
+             </tbody>
+           </table>
+
+            </div>
+
+         <div id="tabs-3">
+
+             <table id="assetDetailsNavTable" class="assetDetailsNavTable">
+              <thead>
+               <tr>
+                <th> Task Name</th>
+                <th> Comment </th>
+                <th> Comment By</th>                           
+               </tr>
+             </thead>
+               <tbody id="tableBody">
+                   @if (Model != null && Model.allComments != null)
+                   {
+
+                   foreach(var t in Model.allComments)
+                   {
+                       
+                       if(t!= null)
+                       {
+             <tr>
+             
+             <td>@t.taskName</td>
+             <td>@t.Comment</td>
+             <td>@t.CommentBy</td>
+                        
+             </tr>
+                       }
+                   }
+                 }
+  
+             </tbody>
+           </table>
+
+            </div>
+
+         @if(Model.isManager == true)
+                 { 
+
+        <div id="tabs-4">
+
+            @if (Model.allUsers != null)
+            {
+             <select id="users">
+             @foreach(var user in Model.allUsers)
+             {
+             <option id="@user.UserName"> @user.UserName</option>
+             }
+             </select>
+             <button type="button" onclick="generateUserGraph('@Url.Action("UserPerformanceGraph", "Graph")')">Generate Performance Graph</button>
+            }
+
+            <div id="graphContainer" class ="graphContainer">
+              <img id="graph" /> 
+
+
+
+            </div>
+            <p>  X-Axis:Tasks Y-Axis: Ratings</p>
+            </div>
+             
+         }
+        </div>
+    </div>
